@@ -19,6 +19,11 @@ app.get('/', function(req, res) {
 
 //routes
 app.get("/usuarios",Usuarios.list);
+app.get("/usuarios/:id",Usuarios.getId);
+app.post("/usuarios",Usuarios.create);
+app.post("/api/usuarios/:id", Usuarios.update);
+app.delete("/api/usuarios/:id", Usuarios.delete);
+
 
 
 app.listen(port);

@@ -21,7 +21,7 @@ Usuario.create = (newUsuario, result) => {
 };
 
 Usuario.findById = (id, result) => {
-    sql.query(`SELECT * FROM usuarios WHERE id = ${id}`, (err, res) => {
+    sql.query(`SELECT * FROM usuarios WHERE usuario_id = ${id}`, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -54,7 +54,7 @@ Usuario.updateById = (id, usuario, result) => {
                 return;
             }
 
-            console.log("usuario actualizada: ", { id: id, ...usuario });
+            console.log("usuario actualizado: ", { id: id, ...usuario });
             result(null, { id: id, ...usuario });
         }
     );
@@ -79,7 +79,7 @@ Usuario.getAll = (result) => {
 
 
 Usuario.remove = (id, result) => {
-    sql.query("DELETE FROM usuarios WHERE id = ?", id, (err, res) => {
+    sql.query("DELETE FROM usuarios WHERE usuario_id = ?", id, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
