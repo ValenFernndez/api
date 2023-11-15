@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require ("cors");
 const Usuarios = require('./controllers/usuario.controller.js');
-
+require('dotenv').config();
 const app = express();
 
 app.use(cors());
@@ -18,9 +18,9 @@ app.get('/', function(req, res) {
 })
 
 //routes
-app.get("/usuarios",Usuarios.list);
+app.get("/api/usuarios",Usuarios.list);
 app.get("/usuarios/:id",Usuarios.getId);
-app.post("/usuarios",Usuarios.create);
+app.post("/api/usuarios",Usuarios.create);
 app.post("/api/usuarios/:id", Usuarios.update);
 app.delete("/api/usuarios/:id", Usuarios.delete);
 

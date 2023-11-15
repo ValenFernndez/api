@@ -79,7 +79,7 @@ Usuario.getAll = (result) => {
 
 
 Usuario.remove = (id, result) => {
-    sql.query("DELETE FROM usuarios WHERE usuario_id = ?", id, (err, res) => {
+    sql.query("DELETE FROM usuarios WHERE id_usuario = ?", id, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(null, err);
