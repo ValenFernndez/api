@@ -21,7 +21,7 @@ Usuario.create = (newUsuario, result) => {
 };
 
 Usuario.findById = (id, result) => {
-    sql.query(`SELECT * FROM usuarios WHERE usuario_id = ${id}`, (err, res) => {
+    sql.query(`SELECT * FROM usuarios WHERE id_usuario = ${id}`, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -40,7 +40,7 @@ Usuario.findById = (id, result) => {
 };
 Usuario.updateById = (id, usuario, result) => {
     sql.query(
-        "UPDATE usuarios SET nombre = ?, estado = ?, plan = ? WHERE usuario_id = ?",
+        "UPDATE usuarios SET nombre = ?, estado = ?, plan = ? WHERE id_usuario = ?",
         [usuario.nombre, usuario.estado, usuario.plan, id],
         (err, res) => {
             if (err) {

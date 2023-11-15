@@ -1,4 +1,4 @@
-const Usuario = require("../models/usuario.model.js");
+const Contenido = require("../models/contenido.model.js");
 
 exports.create = (req, res) => {
     // Validate request
@@ -8,43 +8,45 @@ exports.create = (req, res) => {
       });
     }
   
-    const usuario = new Usuario({
-      //id: req.body.id,
+    const contenido = new Contenido({
       nombre: req.body.nombre,
-      estado: req.body.estado,
-      plan: req.body.plan
+      sinopsis : req.body.sinopsis,
+      url : req.body.url,
+      lanzamiento : req.body.lanzamiento,
+      duracion : req.body.duracion,
+      restriccion_edad : req.body.restriccion_edad
     });
   
-    Usuario.create(usuario, (err, data) => {
+    Contenido.create(contenido, (err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "error al crear usuario."
+            err.message || "error al crear contenido."
         });
       else res.send(data);
     });
   };
 
 exports.list = (req, res) => {
-    Usuario.getAll((err, data) => {
+    Contenido.getAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "error al buscar los usuarios."
+            err.message || "error al buscar los contenidos."
         });
       else res.send({"status": 200, "data":data});
     });
   };
   exports.getId = (req, res) => {
-    Usuario.findById(req.params.id_usuario, (err, data) => {
+    Contenido.findById(req.params.id_contenido, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `usuario no encontrado id ${req.params.id_usuario}.`
+            message: `contenido no encontrado id ${req.params.id_contenido}.`
           });
         } else {
           res.status(500).send({
-            message: "error al buscar id " + req.params.id_usuario
+            message: "error al buscar id " + req.params.id_contenido
           });
         }
       } else res.send(data);
@@ -60,18 +62,18 @@ exports.list = (req, res) => {
   
     console.log(req.body);
   
-    Usuario.updateById(
-      req.params.id_usuario,
-      new Usuario(req.body),
+    Contenido.updateById(
+      req.params.id_contenido,
+      new Contenido(req.body),
       (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
-              message: `usuario no encontrado id ${req.params.id_usuario}.`
+              message: `contenido no encontrado id ${req.params.id_contenido}.`
             });
           } else {
             res.status(500).send({
-              message: "error al actualizar usuario id " + req.params.id_usuario
+              message: "error al actualizar contenido id " + req.params.id_contenido
             });
           }
         } else res.send(data);
@@ -79,18 +81,18 @@ exports.list = (req, res) => {
     );
   };
 exports.delete = (req, res) => {
-  Usuario.remove(req.params.id, (err, data) => {
+  Contenido.remove(req.params.id_contenido, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Usuario no encontrado id ${req.params.id}.`
+          message: `contenido no encontrado id_contenido ${req.params.id_contenido}.`
         });
       } else {
         res.status(500).send({
-          message: "no se puede borrar Usuario, id " + req.params.id
+          message: "no se puede borrar contenido, id_contenido " + req.params.id_contenido
         });
       }
-    } else res.send({ message: `Usuario borrado!` });
+    } else res.send({ message: `contenido borrado!` });
   });
 };
 
