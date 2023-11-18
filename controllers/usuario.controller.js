@@ -36,15 +36,15 @@ exports.list = (req, res) => {
     });
   };
   exports.getId = (req, res) => {
-    Usuario.findById(req.params.id_usuario, (err, data) => {
+    Usuario.findById(req.params.id, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `usuario no encontrado id ${req.params.id_usuario}.`
+            message: `usuario no encontrado id ${req.params.id}.`
           });
         } else {
           res.status(500).send({
-            message: "error al buscar id " + req.params.id_usuario
+            message: "error al buscar id " + req.params.id
           });
         }
       } else res.send(data);

@@ -20,8 +20,8 @@ Usuario.create = (newUsuario, result) => {
     });
 };
 
-Usuario.findById = (id, result) => {
-    sql.query(`SELECT * FROM usuarios WHERE id_usuario = ${id}`, (err, res) => {
+Usuario.findById = (id_usuario, result) => {
+    sql.query(`SELECT * FROM usuarios WHERE id_usuario = ${id_usuario}`, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);

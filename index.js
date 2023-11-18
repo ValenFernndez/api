@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require ("cors");
 const Usuarios = require('./controllers/usuario.controller.js');
+const Contenidos = require('./controllers/contenido.controller.js');
+
 require('dotenv').config();
 const app = express();
 
@@ -13,17 +15,14 @@ app.use(express.urlencoded({ extended: true }));
 
 var port = process.env.PORT || 81 // puerto
 
-app.get('/', function(req, res) {
-  res.json({ mensaje: '¡Hola Mundo!' })   
-})
-
 //routes
 app.get("/api/usuarios",Usuarios.list);
-app.get("/usuarios/:id",Usuarios.getId);
+app.get("/api/usuarios/:id",Usuarios.getId);
 app.post("/api/usuarios",Usuarios.create);
 app.post("/api/usuarios/:id", Usuarios.update);
 app.delete("/api/usuarios/:id", Usuarios.delete);
-
+app.get("/api/contenidos",Contenidos.list);
+app.get("/contenidos/:id",Contenidos.getId);
 
 
 app.listen(port);
