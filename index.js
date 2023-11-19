@@ -22,7 +22,7 @@ app.post("/api/usuarios",Usuarios.create);
 app.post("/api/usuarios/:id", Usuarios.update);
 app.delete("/api/usuarios/:id", Usuarios.delete);
 app.get("/api/contenidos",Contenidos.list);
-app.get("/contenidos/:id",Contenidos.getId);
+app.get("/api/contenidos/:id",Contenidos.getId);
 
 
 app.listen(port);

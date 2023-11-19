@@ -38,15 +38,15 @@ exports.list = (req, res) => {
     });
   };
   exports.getId = (req, res) => {
-    Contenido.findById(req.params.id_contenido, (err, data) => {
+    Contenido.findById(req.params.id, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `contenido no encontrado id ${req.params.id_contenido}.`
+            message: `contenido no encontrado id ${req.params.id}.`
           });
         } else {
           res.status(500).send({
-            message: "error al buscar id " + req.params.id_contenido
+            message: "error al buscar id " + req.params.id
           });
         }
       } else res.send(data);
