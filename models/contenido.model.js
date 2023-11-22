@@ -23,6 +23,28 @@ Contenido.create = (newContenido, result) => {
     });
 };
 
+Contenido.getTag = (id, result) => {
+    sql.query(`SELECT *
+    FROM contenidos
+    INNER JOIN etiquetaxcontenido ON etiquetaxcontenido.id_contenido = contenidos.id_contenido
+    INNER JOIN etiquetas ON etiquetaxcontenido.id_etiqueta = etiquetas.id_etiqueta
+    WHERE etiquetas.id_etiqueta = ${id}`, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+
+        if (res.length) {
+            console.log("contenido encontrada: ", res);
+            result(null, res);
+            return;
+        }
+
+        // not found Tutorial with the id
+        result({ kind: "not_found" }, null);
+    });
+};
 Contenido.findById = (id, result) => {
     sql.query(`SELECT * FROM contenidos WHERE id_contenido  = ${id}`, (err, res) => {
         if (err) {
@@ -100,23 +122,6 @@ Contenido.remove = (id, result) => {
     });
 };
 
-Contenido.findByName = (name, result) => {
-    sql.query(`SELECT * FROM contenidos WHERE nombre LIKE "%${name}%"`, (err, res) => {
-        if (err) {
-            console.log("error: ", err);
-            result(err, null);
-            return;
-        }
 
-        if (res.length) {
-            console.log("contenidos encontrados: ", res);
-            result(null, res);
-            return;
-        }
-
-        // not found Tutorial with the id
-        result({ kind: "not_found" }, null);
-    });
-};
 
 module.exports = Contenido;
