@@ -1,11 +1,11 @@
 const sql = require("../db/db.js");
-
 // constructor
 const Contenido = function (contenido) {
     this.nombre = contenido.nombre;
     this.sinopsis = contenido.sinopsis;
     this.url = contenido.url;
-    this.lanzamiento = contenido.lanzamiento;
+    this.url_imagen = contenido.url_imagen;
+    this.año_lanzamiento = contenido.año_lanzamiento;
     this.duracion = contenido.duracion;
     this.restriccion_edad = contenido.restriccion_edad;
 };
