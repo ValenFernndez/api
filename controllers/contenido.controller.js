@@ -12,7 +12,8 @@ exports.create = (req, res) => {
       nombre: req.body.nombre,
       sinopsis : req.body.sinopsis,
       url : req.body.url,
-      lanzamiento : req.body.lanzamiento,
+      url_imagen : req.body.url_imagen,
+      año_lanzamiento : req.body.año_lanzamiento,
       duracion : req.body.duracion,
       restriccion_edad : req.body.restriccion_edad
     });

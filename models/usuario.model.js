@@ -41,9 +41,10 @@ Usuario.findById = (id_usuario, result) => {
     });
 };
 Usuario.updateById = (id, usuario, result) => {
+    
     sql.query(
-        "UPDATE usuarios SET nombre = ?, estado = ?, plan = ? WHERE id_usuario = ?",
-        [usuario.nombre, usuario.estado, usuario.plan, id],
+        "UPDATE usuarios SET nombre = ?, email = ?, password = ?, estado = ?, plan = ? WHERE id_usuario = ?",
+        [usuario.nombre, usuario.email, usuario.password,usuario.estado, usuario.plan, id],
         (err, res) => {
             if (err) {
                 console.log("error: ", err);
@@ -60,6 +61,7 @@ Usuario.updateById = (id, usuario, result) => {
             result(null, { id: id, ...usuario });
         }
     );
+    console.log("salio")
 };
 
 
