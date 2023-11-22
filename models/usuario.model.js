@@ -3,6 +3,8 @@ const sql = require("../db/db.js");
 // constructor
 const Usuario = function (usuario) {
     this.nombre = usuario.nombre;
+    this.email = usuario.email;
+    this.password = usuario.password;
     this.plan = usuario.plan;
     this.estado = usuario.estado;
 };
