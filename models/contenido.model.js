@@ -109,8 +109,8 @@ Contenido.findByName = (name, result) => {
         }
 
         if (res.length) {
-            console.log("contenido encontrada: ", res[0]);
-            result(null, res[0]);
+            console.log("contenidos encontrados: ", res);
+            result(null, res);
             return;
         }
 
