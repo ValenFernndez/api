@@ -52,6 +52,22 @@ exports.list = (req, res) => {
       } else res.send(data);
     });
   };
+
+  exports.getName = (req, res) => {
+    Contenido.findByName(req.params.nombre, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `contenido no encontrado  ${req.params.nombre}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "error al buscar  " + req.params.nombre
+          });
+        }
+      } else res.send(data);
+    });
+  };
   
   exports.update = (req, res) => {
     if (!req.body) {
