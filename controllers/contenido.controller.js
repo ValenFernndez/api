@@ -28,6 +28,21 @@ exports.create = (req, res) => {
     });
   };
 
+  exports.Tag = (req, res) => {
+    Contenido.getTag(req.params.id, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Etiqueta no encontrada id ${req.params.id}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "error al buscar id " + req.params.id
+          });
+        }
+      } else res.send(data);
+    });
+  };
 exports.list = (req, res) => {
     Contenido.getAll((err, data) => {
       if (err)
@@ -54,21 +69,7 @@ exports.list = (req, res) => {
     });
   };
 
-  exports.getName = (req, res) => {
-    Contenido.findByName(req.params.nombre, (err, data) => {
-      if (err) {
-        if (err.kind === "not_found") {
-          res.status(404).send({
-            message: `contenido no encontrado  ${req.params.nombre}.`
-          });
-        } else {
-          res.status(500).send({
-            message: "error al buscar  " + req.params.nombre
-          });
-        }
-      } else res.send(data);
-    });
-  };
+  
   
   exports.update = (req, res) => {
     if (!req.body) {
