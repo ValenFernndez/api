@@ -81,17 +81,17 @@ exports.list = (req, res) => {
     console.log(req.body);
   
     Contenido.updateById(
-      req.params.id_contenido,
+      req.params.id,
       new Contenido(req.body),
       (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
-              message: `contenido no encontrado id ${req.params.id_contenido}.`
+              message: `contenido no encontrado id ${req.params.id}.`
             });
           } else {
             res.status(500).send({
-              message: "error al actualizar contenido id " + req.params.id_contenido
+              message: "error al actualizar contenido id " + req.params.id
             });
           }
         } else res.send(data);

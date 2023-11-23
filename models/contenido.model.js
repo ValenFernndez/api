@@ -65,8 +65,8 @@ Contenido.findById = (id, result) => {
 };
 Contenido.updateById = (id, contenido, result) => {
     sql.query(
-        "UPDATE contenidos SET nombre = ?, sinopsis = ?, url = ?,lanzamiento= ?, duracion =?, restriccion_edad = ? WHERE id_contenido = ?",
-        [contenido.nombre, contenido.sinopsis, contenido.url, contenido.lanzamiento, contenido.duracion, contenido.restriccion_edad, id],
+        "UPDATE contenidos SET nombre = ?, sinopsis = ?, url = ?,año_lanzamiento= ?, duracion =?, restriccion_edad = ? WHERE id_contenido = ?",
+        [contenido.nombre, contenido.sinopsis, contenido.url, contenido.año_lanzamiento, contenido.duracion, contenido.restriccion_edad, id],
         (err, res) => {
             if (err) {
                 console.log("error: ", err);

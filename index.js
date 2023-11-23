@@ -24,6 +24,7 @@ app.delete("/api/usuarios/:id", Usuarios.delete);
 app.get("/api/contenidos",Contenidos.list);
 app.get("/api/contenidos/:id",Contenidos.getId);
 app.post("/api/contenidos",Contenidos.create);
+app.post("/api/contenidos/:id", Contenidos.update);
 app.delete("/api/contenidos/:id", Contenidos.delete);
 app.get("/api/contenidos/tag/:id", Contenidos.Tag);
 
