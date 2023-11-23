@@ -63,17 +63,17 @@ exports.list = (req, res) => {
     console.log(req.body);
   
     Usuario.updateById(
-      req.params.id_usuario,
+      req.params.id,
       new Usuario(req.body),
       (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
-              message: `usuario no encontrado id ${req.params.id_usuario}.`
+              message: `usuario no encontrado id ${req.params.id}.`
             });
           } else {
             res.status(500).send({
-              message: "error al actualizar usuario id " + req.params.id_usuario
+              message: "error al actualizar usuario id " + req.params.id
             });
           }
         } else res.send(data);

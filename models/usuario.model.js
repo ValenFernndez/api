@@ -61,7 +61,6 @@ Usuario.updateById = (id, usuario, result) => {
             result(null, { id: id, ...usuario });
         }
     );
-    console.log("salio")
 };
 
 
