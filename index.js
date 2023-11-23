@@ -25,6 +25,7 @@ app.get("/api/contenidos",Contenidos.list);
 app.get("/api/contenidos/nombre/:nombre",Contenidos.getName);
 app.get("/api/contenidos/:id",Contenidos.getId);
 app.post("/api/contenidos",Contenidos.create);
+app.delete("/api/contenidos/:id", Contenidos.delete);
 
 
 app.listen(port);

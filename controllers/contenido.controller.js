@@ -98,7 +98,7 @@ exports.list = (req, res) => {
     );
   };
 exports.delete = (req, res) => {
-  Contenido.remove(req.params.id_contenido, (err, data) => {
+  Contenido.remove(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
